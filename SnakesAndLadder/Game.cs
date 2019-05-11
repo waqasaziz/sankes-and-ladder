@@ -10,6 +10,7 @@ namespace SnakesAndLadder
 
         private readonly IDiceRoller _diceRoller;
         public int Position { get; private set; }
+        public bool IsWon { get; private set; }
 
         public Game(int statrPosition = 1) : this(new DefaultDiceRoller())
         {
@@ -27,6 +28,8 @@ namespace SnakesAndLadder
 
             if (Position + spaces <= MaxTokenPosition)
                 Position += spaces;
+
+            IsWon = Position == MaxTokenPosition;
         }
 
         public void RolleDice() => MoveToken(_diceRoller.Roll());
