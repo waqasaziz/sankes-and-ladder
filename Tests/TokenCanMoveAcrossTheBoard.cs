@@ -23,7 +23,7 @@ namespace Tests
         public void IsToken_MovedToPositionFour_When_MovingThreeSpacesFromSqaureOne()
         {
             const int spaces = 3;
-            var expectedPotions = _game.Position + spaces;
+            const int expectedPotions = 4;
 
             _game.MoveToken(spaces);
 
@@ -35,7 +35,7 @@ namespace Tests
         {
             const int firstSpaces = 3;
             const int secondSpaces = 4;
-            var expectedPotions = _game.Position + firstSpaces + secondSpaces ;
+            const int expectedPotions = 8 ;
 
             _game.MoveToken(firstSpaces);
             _game.MoveToken(secondSpaces);
