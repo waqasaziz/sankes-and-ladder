@@ -4,11 +4,11 @@ using Xunit;
 
 namespace Tests
 {
-    public class TokenCanMoveAcrossBoard
+    public class TokenCanMoveAcrossTheBoard
     {
         private readonly Game _game;
 
-        public TokenCanMoveAcrossBoard()
+        public TokenCanMoveAcrossTheBoard()
         {
             _game = new Game();
         }
@@ -23,22 +23,24 @@ namespace Tests
         public void IsToken_MovedToPositionFour_When_MovingThreeSpacesFromSqaureOne()
         {
             const int spaces = 3;
+            var expectedPotions = _game.Position + spaces;
 
             _game.MoveToken(spaces);
 
-            Assert.True(_game.Position == 4, $"Token doesn't move {spaces}");
+            Assert.True(_game.Position == expectedPotions, $"Token doesn't move {spaces} spaces");
         }
 
         [Fact]
         public void IsToken_MovedToPositionEight_When_MovingThreeAndThenFourSpacesFromSqaureOne()
         {
             const int firstSpaces = 3;
-            const int secondSpaces = 3;
+            const int secondSpaces = 4;
+            var expectedPotions = _game.Position + firstSpaces + secondSpaces ;
 
             _game.MoveToken(firstSpaces);
             _game.MoveToken(secondSpaces);
 
-            Assert.True(_game.Position == 8, $"Token doesn't move incrementally to position {firstSpaces + secondSpaces}");
+            Assert.True(_game.Position == expectedPotions, $"Token doesn't move incrementally to position {expectedPotions}");
         }
     }
 }
